@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>{% block title %}{% endblock %} | Flask</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<style>
+		body { padding-top: 70px; }
+	</style>
+	<!-- JQuery -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}" charset="utf-8"></script>
+	{{ ckeditor.load() }}
+</head>
+
+<body>
+
+	{% include "__navbar.html" %}
+
+	<div class="container">
+		<div class="row">
+			<div class="text-center">
+				<h1 class="text-center">
+					{% block content_title %}
+
+					{% endblock %}
+				</h1>
+			</div>
+			{% block content %}
+
+			{% endblock %}
+		</div>
+	</div>
+
+
+	<!-- Bootstrap script -->
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>

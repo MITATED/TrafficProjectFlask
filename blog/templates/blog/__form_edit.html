@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<form action="{{ url_for('blog.create_post') }}" method="POST">
+				{% for field in form %}
+				
+					<div class="form-group">
+						{{ field.label(class='control-label') }}
+						{{ ckeditor.config(name='body', custom_config="uiColor: '#9AB8F3'")}} 
+						{{ field(class='form-control') }}
+					</div>
+
+				{% endfor %}
+				<button type="submit" class="btn btn-success col-md-12">Create</button>
+			</form>
+		</div>
+	</div>
+</div>

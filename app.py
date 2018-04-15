@@ -1,0 +1,26 @@
+from flask import Flask 
+from config import Configuration
+
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import *
+
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+
+
+app = Flask(__name__, static_url_path="/static")
+app.config.from_object(Configuration)
+
+
+db = SQLAlchemy(app)
+
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
+
+
+import admin # Admin configuration
+import extend # CKEditor, url_for_other_page
+
+
